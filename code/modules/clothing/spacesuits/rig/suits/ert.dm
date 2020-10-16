@@ -134,3 +134,9 @@
 
 	req_access = list()
 	req_one_access = list()
+
+/obj/item/rig/ert/assetprotection/cartel
+	name = "unidentifiable combat hardsuit"
+	desc = "A mysterious hardsuit, this is covered in logos you’ve never seen depicting a blue chainlink. It looks particularly alien, despite clearly being fitted for a Human body."
+	suit_type = "unidentifiable combat"
+	icon_state = "cartel_rig"
