@@ -8,7 +8,7 @@
 	path = "aurora"
 	lobby_icons = list('icons/misc/titlescreens/aurora/kotw-official.dmi')
 //	lobby_icons = list('icons/misc/titlescreens/aurora/humans.dmi', 'icons/misc/titlescreens/aurora/synthetics.dmi', 'icons/misc/titlescreens/aurora/king_of_the_world.dmi')
-	lobby_transitions = 10 SECONDS
+//	lobby_transitions = 10 SECONDS
 
 	station_levels = list(2, 3, 4, 5, 6, 7)
 	admin_levels = list(1)
