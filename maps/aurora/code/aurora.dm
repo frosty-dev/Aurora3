@@ -6,10 +6,10 @@
 				   Orbiting at the very edge of the Tau Ceti system, approximately 12 light-years away from Sol, \
 				   it is under the joint administration of the Republic of Biesel and the trans-stellar corporate conglomerate NanoTrasen."
 	path = "aurora"
-	lobby_icons = list('icons/misc/titlescreens/aurora/kotw-official.dmi')
+//	lobby_icons = list('icons/misc/titlescreens/aurora/kotw-official.dmi')
 //	lobby_icons = list('icons/misc/titlescreens/aurora/humans.dmi', 'icons/misc/titlescreens/aurora/synthetics.dmi', 'icons/misc/titlescreens/aurora/king_of_the_world.dmi')
 //	lobby_transitions = 10 SECONDS
-
+	lobby_icons = list('icons/misc/titlescreens/aurora/kotw_static.dmi')
 	station_levels = list(2, 3, 4, 5, 6, 7)
 	admin_levels = list(1)
 	contact_levels = list(3, 4, 5, 6, 7)
