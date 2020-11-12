@@ -37,7 +37,7 @@
 	company_short = "NT"
 	system_name = "Tau Ceti"
 
-	command_spawn_enabled = TRUE
+	command_spawn_enabled = FALSE
 	command_spawn_message = "Welcome to the Odin! Simply proceed down and to the right to board the shuttle to your workplace!"
 
 	station_networks = list(
@@ -87,6 +87,10 @@
 		/datum/shuttle/autodock/multi/distress,
 		/datum/shuttle/autodock/multi/merc_aurora_elite
 	)
+
+	allowed_spawns = list("Cryogenic Storage", "Cyborg Storage")
+	default_spawn = "Cryogenic Storage"
+	spawn_types = list(/datum/spawnpoint/cryo, /datum/spawnpoint/cyborg)
 
 /datum/map/aurora/generate_asteroid()
 	// Create the chasms.

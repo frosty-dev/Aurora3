@@ -541,7 +541,7 @@
 			var/obj/item/clothing/glasses/G = H.glasses
 			G.prescription = 7
 			G.autodrobe_no_remove = TRUE
-	
+
 	if(H.species && !H.species_items_equipped)
 		H.species.equip_later_gear(H)
 		H.species_items_equipped = TRUE
@@ -668,7 +668,7 @@
 			spawnpos.after_join(H)
 		else
 			to_chat(H, "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
-			H.forceMove(pick(latejoin))
+			H.forceMove(pick(latejoin_cryo))
 			. = "is inbound from the [current_map.dock_name]"
 	else
 		H.forceMove(pick(latejoin))
