@@ -59,10 +59,10 @@
 		NETWORK_SUPPLY
 	)
 
-	shuttle_docked_message = "The scheduled crew transfer shuttle to %dock% has docked with the station. It will depart in approximately %ETA% minutes."
-	shuttle_leaving_dock = "The crew transfer shuttle has left the station. Estimate %ETA% minutes until the shuttle docks at %dock%."
-	shuttle_called_message = "A crew transfer to %dock% has been scheduled. The shuttle has been called. It will arrive in approximately %ETA% minutes."
-	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
+	shuttle_docked_message = "The scheduled crew cryo cycle will start in %ETA% minutes."
+	shuttle_leaving_dock = "The scheduled crew cryo cycle has started."
+	shuttle_called_message = "A scheduled crew cryo cycle has been scheduled. It will start in approximately %ETA% minutes."
+	shuttle_recall_message = "The scheduled crew cryo cycle has been cancelled."
 	emergency_shuttle_docked_message = "The emergency shuttle has docked with the station. You have approximately %ETD% minutes to board the emergency shuttle."
 	emergency_shuttle_leaving_dock = "The emergency shuttle has left the station. Estimate %ETA% minutes until the shuttle docks at %dock%."
 	emergency_shuttle_recall_message = "The emergency shuttle has been recalled."
