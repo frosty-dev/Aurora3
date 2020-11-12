@@ -669,10 +669,10 @@
 		else
 			to_chat(H, "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
 			H.forceMove(pick(latejoin_cryo))
-			. = "is inbound from the [current_map.dock_name]"
+			. = "has completed cryogenic revival"
 	else
-		H.forceMove(pick(latejoin))
-		. = "is inbound from the [current_map.dock_name]"
+		H.forceMove(pick(latejoin_cryo))
+		. = "has completed cryogenic revival"
 
 	Debug("LS/([H]): Completed, spawning at area [H.loc.loc].")
 
