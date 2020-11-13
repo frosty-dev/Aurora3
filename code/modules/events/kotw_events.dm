@@ -20,3 +20,8 @@
 
 /datum/event/freighter/announce()
 	command_announcement.Announce("NanoTrasen space station Aurora, you are expected to be docked shortly by a freighter requiring emergency supplies, namely food, water and medical supplies. Expect urgent requests to come frequently as the freighter ferries supplies to its mothership. We are rerouting strategic assets to your station shortly for escort of the freighter.", "NanoTrasen Freighter Arrival")
+
+/datum/event/freighter/start()
+	for(var/s in SSghostroles.spawners)
+		var/datum/ghostspawner/human/ert/tcfl/G = SSghostroles.spawners[s]
+			G.enable()
