@@ -1629,6 +1629,7 @@
 #include "code\modules\ghostroles\spawner\human\responseteams\deathsquad.dm"
 #include "code\modules\ghostroles\spawner\human\responseteams\iac.dm"
 #include "code\modules\ghostroles\spawner\human\responseteams\kataphracts.dm"
+#include "code\modules\ghostroles\spawner\human\responseteams\kosmostrelki.dm"
 #include "code\modules\ghostroles\spawner\human\responseteams\med_eridani.dm"
 #include "code\modules\ghostroles\spawner\human\responseteams\mercenary.dm"
 #include "code\modules\ghostroles\spawner\human\responseteams\nt_ert.dm"
