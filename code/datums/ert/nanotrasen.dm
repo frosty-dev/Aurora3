@@ -1,7 +1,8 @@
 /datum/responseteam/nanotrasen
 	name = "Nanotrasen ERT"
-	chance = 20
+	chance = 1
 	spawner = /datum/ghostspawner/human/ert/nanotrasen
+	admin = TRUE
 
 /datum/responseteam/deathsquad
 	name = "Nanotrasen Asset Protection"

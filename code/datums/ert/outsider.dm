@@ -28,8 +28,7 @@
 	admin = TRUE
 	chance = 1
 
-///datum/responseteam/pra
-//	name = "Expeditionary Kosmostrelki"
-//	spawner = /datum/ghostspawner/human/ert/pra_cosmonaut
-//	admin = TRUE
-//	chance = 15
+datum/responseteam/pra
+	name = "Expeditionary Kosmostrelki"
+	spawner = /datum/ghostspawner/human/ert/pra_cosmonaut
+	chance = 15

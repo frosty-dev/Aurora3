@@ -1,4 +1,4 @@
- /*
+
 /datum/ghostspawner/human/ert/pra_cosmonaut
 	short_name = "exp_pra_cosmonaut"
 	name = "Expeditionary Kosmostrelki"
@@ -56,4 +56,3 @@
 	outfit = /datum/outfit/admin/pra_cosmonaut/ert/medic
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI, SPECIES_TAJARA_ZHAN)
 
-*/
