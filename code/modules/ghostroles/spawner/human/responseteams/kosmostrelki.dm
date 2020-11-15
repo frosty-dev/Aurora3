@@ -28,7 +28,7 @@
 
 /datum/ghostspawner/human/ert/pra_cosmonaut/leader
 	short_name = "exp_pra_leader"
-	name = "Expeditionary Kosmostrelki Party Commissar"
+	name = "Expeditionary Kosmostrelki Commander"
 	desc = "Lead the Kosmostrelki in helping NanoTrasen and the Republic of Biesel against the invading forces."
 
 	max_count = 1
