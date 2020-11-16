@@ -11,7 +11,7 @@
       </template>
       <template v-if="active_virus">
         <vui-button :class="{ selected: activeview == 'virus'}" @click="activeview = 'virus'">Virus</vui-button>
-        <vui-button :params="{ setactive_virus: 'null'}" @click="activeview = 'list-virus'" push-state>Unload record</vui-button>
+        <vui-button :params="{ setactive_virus: 'null'}" @click="activeview = 'list-virus'">Unload record</vui-button>
         <vui-button v-if="canprint" :params="{ print: 'active_virus'}">Print</vui-button>
       </template>
       <vui-button style="position: absolute; right: 12px;" :params="{ logout: 1 }">Logout</vui-button>
