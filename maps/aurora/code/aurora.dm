@@ -9,7 +9,7 @@
 //	lobby_icons = list('icons/misc/titlescreens/aurora/kotw-official.dmi')
 //	lobby_icons = list('icons/misc/titlescreens/aurora/humans.dmi', 'icons/misc/titlescreens/aurora/synthetics.dmi', 'icons/misc/titlescreens/aurora/king_of_the_world.dmi')
 //	lobby_transitions = 10 SECONDS
-	lobby_icons = list('icons/misc/titlescreens/aurora/kotw_static.dmi')
+	lobby_icons = list('icons/misc/titlescreens/aurora/kotw_final.dmi')
 	station_levels = list(2, 3, 4, 5, 6, 7)
 	admin_levels = list(1)
 	contact_levels = list(3, 4, 5, 6, 7)
@@ -59,10 +59,10 @@
 		NETWORK_SUPPLY
 	)
 
-//	shuttle_docked_message = "The scheduled crew cryo cycle will start in %ETA% minutes."
-//	shuttle_leaving_dock = "The scheduled crew cryo cycle has started."
-//	shuttle_called_message = "A scheduled crew cryo cycle has been scheduled. It will start in approximately %ETA% minutes."
-//	shuttle_recall_message = "The scheduled crew cryo cycle has been cancelled."
+	shuttle_docked_message = "The scheduled crew cryo cycle will start in %ETA% minutes."
+	shuttle_leaving_dock = "The scheduled crew cryo cycle has started."
+	shuttle_called_message = "A scheduled crew cryo cycle has been scheduled. It will start in approximately %ETA% minutes."
+	shuttle_recall_message = "The scheduled crew cryo cycle has been cancelled."
 	emergency_shuttle_docked_message = "The emergency shuttle has docked with the station. You have approximately %ETD% minutes to board the emergency shuttle."
 	emergency_shuttle_leaving_dock = "The emergency shuttle has left the station. Estimate %ETA% minutes until the shuttle docks at %dock%."
 	emergency_shuttle_recall_message = "The emergency shuttle has been recalled."
@@ -88,14 +88,9 @@
 		/datum/shuttle/autodock/multi/merc_aurora_elite
 	)
 
-//	allowed_spawns = list("Cryogenic Storage", "Cyborg Storage")
-//	default_spawn = "Cryogenic Storage"
-//	spawn_types = list(/datum/spawnpoint/cryo, /datum/spawnpoint/cyborg)
-
-	shuttle_docked_message = "The scheduled crew transfer shuttle to %dock% has docked with the station. It will depart in approximately %ETA% minutes."
-	shuttle_leaving_dock = "The crew transfer shuttle has left the station. Estimate %ETA% minutes until the shuttle docks at %dock%."
-	shuttle_called_message = "A crew transfer to %dock% has been scheduled. The shuttle has been called. It will arrive in approximately %ETA% minutes."
-	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
+	allowed_spawns = list("Cryogenic Storage", "Cyborg Storage")
+	default_spawn = "Cryogenic Storage"
+	spawn_types = list(/datum/spawnpoint/cryo, /datum/spawnpoint/cyborg)
 
 /datum/map/aurora/generate_asteroid()
 	// Create the chasms.

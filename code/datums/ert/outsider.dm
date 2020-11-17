@@ -1,7 +1,8 @@
 /datum/responseteam/mercenary
 	name = "Independent Mercenaries"
-	chance = 15
+	chance = 1
 	spawner = /datum/ghostspawner/human/ert/mercenary
+	admin = TRUE
 
 /datum/responseteam/kataphracts
 	name = "Kataphracts"
@@ -18,9 +19,10 @@
 
 /datum/responseteam/med_eridani
 	name = "Eridani Medical Team"
-	chance = 10
+	chance = 1
 	spawner = /datum/ghostspawner/human/ert/med_eridani
 	equipment_map = /datum/map_template/distress_iac
+	admin = TRUE
 
 /datum/responseteam/syndicate
 	name = "Syndicate Commandos"
@@ -28,7 +30,17 @@
 	admin = TRUE
 	chance = 1
 
-datum/responseteam/pra
+/datum/responseteam/pra
 	name = "Expeditionary Kosmostrelki"
 	spawner = /datum/ghostspawner/human/ert/pra_cosmonaut
+	chance = 15
+
+/datum/responseteam/elyra
+	name = "Elyran Troopers"
+	spawner = /datum/ghostspawner/human/ert/elyra
+	chance = 15
+
+/datum/responseteam/coc
+	name = "Coalition of Colonies Troopers"
+	spawner = /datum/ghostspawner/human/ert/coc
 	chance = 15
