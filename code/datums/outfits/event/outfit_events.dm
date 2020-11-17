@@ -105,7 +105,7 @@
 /datum/outfit/admin/event/sol_marine
 	name = "Solarian Marine"
 
-	uniform = /obj/item/clothing/under/rank/fatigues
+	uniform = /obj/item/clothing/under/rank/marine/fatigues
 	shoes = /obj/item/clothing/shoes/magboots
 	gloves = /obj/item/clothing/gloves/combat
 	l_ear = /obj/item/device/radio/headset/syndicate
@@ -117,7 +117,7 @@
 	suit = /obj/item/clothing/suit/space/void/sol
 	mask = /obj/item/clothing/mask/gas/tactical
 	back = /obj/item/tank/jetpack/carbondioxide
-	suit_store = /obj/item/gun/projectile/automatic/rifle/sol
+	suit_store = /obj/item/gun/projectile/automatic/rifle
 
 	belt = /obj/item/storage/belt/military
 	belt_contents = list(
@@ -132,6 +132,13 @@
 
 	accessory = /obj/item/clothing/accessory/holster/hip/brown
 	accessory_contents = list(/obj/item/gun/projectile/pistol/sol = 1)
+
+/datum/outfit/admin/event/sol_marine/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	var/obj/item/clothing/accessory/sol_pin/S = new
+	var/obj/item/clothing/under/U = H.get_equipped_item(slot_w_uniform)
+	if(S && U)
+		U.attach_accessory(H, S)
 
 /datum/outfit/admin/event/sol_marine/heavy
 	name = "Heavy Solarian Marine"
@@ -154,3 +161,15 @@
 	accessory = /obj/item/clothing/accessory/storage/bandolier
 	accessory_contents = list(/obj/item/ammo_casing/shotgun = 8,
 							/obj/item/ammo_casing/shotgun/pellet = 8)
+
+/datum/outfit/admin/event/sol_marine
+	name = "Solarian Sergeant"
+	belt_contents = list(
+			/obj/item/ammo_magazine/c762/sol = 3,
+			/obj/item/ammo_magazine/mc9mmt = 2,
+			/obj/item/shield/energy = 1,
+			/obj/item/melee/energy/sword = 1,
+			/obj/item/grenade/frag = 1,
+			/obj/item/grenade/flashbang = 1
+	)
+	accessory_contents = list(/obj/item/gun/projectile/automatic/wt550/lethal = 1)

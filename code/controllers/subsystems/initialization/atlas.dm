@@ -143,6 +143,7 @@ var/datum/controller/subsystem/atlas/SSatlas
 
 	priority_announcement = new(do_log = 0)
 	command_announcement = new(do_log = 0, do_newscast = 1)
+	icarus_announcement = new(do_log = 0)
 
 	log_debug("atlas: running [LAZYLEN(mapload_callbacks)] mapload callbacks.")
 	for (var/thing in mapload_callbacks)

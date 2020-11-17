@@ -1,5 +1,6 @@
 /var/datum/announcement/priority/priority_announcement
 /var/datum/announcement/priority/command/command_announcement
+/var/datum/announcement/priority/command/icarus/icarus_announcement
 
 /datum/announcement
 	var/title = "Attention"
@@ -26,6 +27,11 @@
 	..(do_log, new_sound, do_newscast, do_print)
 	title = "[current_map.boss_name] Update"
 	announcement_type = "[current_map.boss_name] Update"
+
+/datum/announcement/priority/command/icarus/New(var/do_log = 1, var/new_sound = 'sound/misc/announcements/notice.ogg', var/do_newscast = 0, var/do_print = 0)
+	..(do_log, new_sound, do_newscast, do_print)
+	title = "NDV Icarus Status Update"
+	announcement_type = "NDV Icarus Status Update"
 
 /datum/announcement/priority/security/New(var/do_log = 1, var/new_sound = 'sound/misc/announcements/notice.ogg', var/do_newscast = 0, var/do_print = 0)
 	..(do_log, new_sound, do_newscast, do_print)
@@ -66,13 +72,12 @@
 
 /datum/announcement/priority/command/MessageAndSound(var/message as text, var/message_title as text, var/message_sound)
 	var/command_title
-	command_title += "<h2 class='alert'>[current_map.boss_name] Update</h2>"
+	command_title += "<h2 class='alert'>[announcement_type]</h2>"
 	if (message_title)
 		command_title += "<h3 class='alert'>[message_title]</h3>"
 
 	var/command_body
-	command_body += "<br><span class='alert'>[message]</span><br>"
-	command_body += "<br>"
+	command_body += "<span class='alert'>[message]</span><br>"
 	. = ..(command_body, command_title, message_sound)
 
 /datum/announcement/priority/security/MessageAndSound(var/message as text, var/message_title as text, var/message_sound)
