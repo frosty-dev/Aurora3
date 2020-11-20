@@ -182,6 +182,8 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Rescue Pod",						/datum/event/rescue_pod, 					50,		list(ASSIGNMENT_MEDICAL = 10, ASSIGNMENT_SECURITY = 2), is_one_shot = TRUE),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Burglar Pod",						/datum/event/rescue_pod/burglar, 			50,		list(ASSIGNMENT_SECURITY = 5), is_one_shot = TRUE, excluded_roundtypes = list("Extended")),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Debris Field",						/datum/event/meteor_wave/bombardment/minor,	0),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "NT Escape Pod",					/datum/event/rescue_pod/crewman/nt,			0),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Sol Escape Pod",					/datum/event/rescue_pod/crewman/sol,		0)
 	)
 
 /datum/event_container/major

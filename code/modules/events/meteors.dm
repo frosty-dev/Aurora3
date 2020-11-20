@@ -10,6 +10,8 @@
 	var/duration = 340//Total duration in seconds that the storm will last after it starts
 
 	var/downed_ship = FALSE
+	var/bombardment = FALSE
+	var/set_dir = 0
 
 	var/waves		= 8
 	var/next_wave 	= 86
@@ -70,7 +72,7 @@
 /datum/event/meteor_wave/proc/event_meteor_wave(var/number = meteors_in_wave)
 	for(var/i = 0 to number)
 		spawn(rand(10, 80))
-			spawn_meteor(downed_ship)
+			spawn_meteor(downed_ship, bombardment, set_dir)
 
 /datum/event/meteor_wave/downed_ship
 	downed_ship = TRUE

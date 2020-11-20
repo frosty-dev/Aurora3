@@ -32,9 +32,9 @@
 		if(security_level < SEC_LEVEL_RED)
 			set_security_level(SEC_LEVEL_RED)
 	else
-		savior_type = prob(75) ? pick("NT vessels", "TCFL vessels") : pick("Coalition vessels", "Elyran vessels")
+		savior_type = prob(75) ? pick("NT", "TCFL") : pick("Coalition", "Elyran")
 		icarus_announcement.Announce(
-			"The [threat_type] was caught and successfully neutralized by supporting [savior_type]. Judging by the incoming tactical data, they'll be in need of repair and resupply. \
+			"The [threat_type] was caught and successfully neutralized by supporting [savior_type] vessels. Judging by the incoming tactical data, they'll be in need of repair and resupply. \
 			Forwarding their requests for assistance on to you.", "Solarian Incursion Update")
 		// Fire Pitstop here
 		kill()
@@ -50,32 +50,56 @@
 		return
 	if(destroyed)
 		icarus_announcement.Announce(
-			"N.S.S. Aurora, the Icarus has successfully neutralized the enemy. CIC is tracking some debris inbound to the station. \
+			"N.S.S. Aurora, the Icarus is fully committed with the enemy. CIC is tracking some debris and inbound ordinance heading toward the station. \
 			Recommend your crew stay away from exterior access points and unshielded areas until the threat has passed. \
 			If necessary, Icarus response teams are on standby to assist on-station security in maintaining control of the station. NDV Icarus, out.", "Solarian Incursion Update"
 		)
-		var/datum/event_container/MOD = SSevents.event_containers[EVENT_LEVEL_MODERATE]
-		var/datum/event_meta/bmb = MOD.select_event_by_type(/datum/event/meteor_wave/bombardment/minor)
-		MOD.next_event_time = world.time + 10 SECONDS
-		// sol escape pods
+		fire_bombardment_event(66)
+		if(prob(66))
+			fire_escape_pods("crewman/sol")
 	else
 		icarus_announcement.Announce(
-			"N.S.S. Aurora, the Icarus has managed to force the enemy contact off the field. CIC is tracking several inbound projectiles toward the station, but the Icarus has no active drones in position to intercept. \
+			"N.S.S. Aurora, the Icarus is being forced off the field by the enemy contact. CIC is tracking several inbound projectiles toward the station, and we're in no position to intercept. \
 			Recommend you brace for impact and activate damage control parties immediately. The Icarus will be unable to provide support for some time. Godspeed, Aurora.", "Solarian Incursion Update"
 		)
-		var/datum/event_container/MOD = SSevents.event_containers[EVENT_LEVEL_MAJOR]
-		var/datum/event_meta/bmb = MOD.select_event_by_type(/datum/event/meteor_wave/bombardment)
-		MOD.next_event_time = world.time + 10 SECONDS
-		// fire Bombardment (Moderate) and Icarus Wounded here
+		fire_bombardment_event(0)
+		if(prob(66))
+			fire_escape_pods("crewman/nt")
 
+/datum/event/sol_team/proc/fire_bombardment_event(var/prob_minor, var/time_until = 10 SECONDS)
+	if(!prob_minor)
+		prob_minor = 0
+	if(prob(prob_minor))
+		// True: minor bombardment
+		var/datum/event_container/MOD = SSevents.event_containers[EVENT_LEVEL_MODERATE]
+		MOD.select_event_by_type(/datum/event/meteor_wave/bombardment/minor)
+		MOD.next_event_time = world.time + time_until
+	else
+		// False: major bombardment
+		var/datum/event_container/MAJ = SSevents.event_containers[EVENT_LEVEL_MAJOR]
+		MAJ.select_event_by_type(/datum/event/meteor_wave/bombardment)
+		MAJ.next_event_time = world.time + time_until
+
+/datum/event/sol_team/proc/fire_escape_pods(var/rescue_type, var/time_until = 10 SECONDS)
+	if(!rescue_type)
+		return
+	var/datum/event/rescue_pod/R = text2path("/datum/event/rescue_pod/[rescue_type]")
+	if(ispath(R))
+		var/datum/event_container/MOD = SSevents.event_containers[EVENT_LEVEL_MODERATE]
+		MOD.select_event_by_type(R)
+		MOD.next_event_time = world.time + time_until
 /datum/event/meteor_wave/bombardment
-	downed_ship = TRUE
+	bombardment = TRUE
 	ic_name = "bombardment"
 	no_fake = TRUE
+	startWhen = 5
+
+/datum/event/meteor_wave/bombardment/setup()
+	set_dir = pick(1, 2, 3, 4)
 
 /datum/event/meteor_wave/bombardment/minor
 	// same stats as meteor_wave/shower
-	startWhen   = 5
+	startWhen   = 5 // delete this later
 	wave_delay  = 6
 	min_waves 	= 7
 	max_waves 	= 9
@@ -85,6 +109,7 @@
 
 	waves		= 4//this is randomised
 	next_wave 	= 86
+	bombardment = FALSE
 
 /datum/event/meteor_wave/bombardment/announce()
 	command_announcement.Announce("Station sensors detect several high-speed projectiles closing rapidly. Estimate one minute to impact. \
@@ -108,6 +133,20 @@
 
 /datum/event/meteor_wave/bombardment/minor/announce_end()
 	command_announcement.Announce("The station is now clear of the debris cloud. Crew may now return to their stations and attend to damage control procedures.", "Debris Alert")
+
+/datum/event/rescue_pod/crewman
+	no_fake = 1
+
+/datum/event/rescue_pod/crewman/announce()
+	command_announcement.Announce("The NDV Icarus reports inbound escape pods to the [station_name()]. Investigate and attend to the situation in accordance with NanoTrasen corporate regulations.", new_title="NDV Icarus", new_sound='sound/AI/escapepod.ogg')
+
+/datum/event/rescue_pod/crewman/setup()
+	spawner = SSghostroles.get_spawner(spawner_name)
+/datum/event/rescue_pod/crewman/sol
+	spawner_name = "solescape"
+
+/datum/event/rescue_pod/crewman/nt
+	spawner_name = "ntescape"
 
 /datum/event/shift_goal
 	no_fake = 1

@@ -10,7 +10,7 @@
 		spawn(0)
 			spawn_meteor()
 
-/proc/spawn_meteor(var/ship_debris_only = FALSE)
+/proc/spawn_meteor(var/ship_debris_only = FALSE, var/bombardment = FALSE, var/dir = 0)
 	var/startx
 	var/starty
 	var/endx
@@ -19,7 +19,7 @@
 	var/turf/pickedgoal
 	var/max_i = 10//number of tries to spawn meteor.
 
-	switch(pick(1,2,3,4))
+	switch(dir ? dir : pick(1,2,3,4))
 		if(1) //NORTH
 			starty = world.maxy-(TRANSITIONEDGE+2)
 			startx = rand((TRANSITIONEDGE+2), world.maxx-(TRANSITIONEDGE+2))
@@ -49,6 +49,12 @@
 	var/obj/effect/meteor/M
 	if(ship_debris_only)
 		M = new /obj/effect/meteor/ship_debris(pickedstart)
+	else if(bombardment)
+		switch(rand(1, 4))
+			if(1 to 2)
+				M = new /obj/effect/meteor/ship_debris(pickedstart)
+			if(3 to 4)
+				M = new /obj/effect/meteor/coilgun(pickedstart)
 	else
 		switch(rand(1, 100))
 			if(1 to 10)
@@ -78,7 +84,7 @@
 
 	M.dest = pickedgoal
 	spawn(1)
-		walk_towards(M, M.dest, 2)
+		walk_towards(M, M.dest, M.move_lag)
 
 /obj/effect/meteor
 	name = "meteor"
@@ -86,6 +92,7 @@
 	icon_state = "large"
 	density = 1
 	anchored = 1.0
+	var/move_lag = 2
 	var/hits = 3
 	var/detonation_chance = 50
 	var/power = 2
@@ -349,6 +356,21 @@
 		if(prob(0.25))
 			new /obj/effect/gibspawner/human(eligible_turf)
 			new /obj/random/voidsuit/no_nanotrasen(eligible_turf)
+
+/obj/effect/meteor/coilgun
+	name = "coilgun projectile"
+	icon_state = "coilgun"
+	meteor_loot = null
+	dropamt = 0
+	power = 5
+	power_step = 1
+	hits = 15
+	detonation_chance = 95
+	move_lag = 1
+
+/obj/effect/meteor/coilgun/New()
+	..()
+	msg_admin_attack("Coilgun projectile spawned at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 
 //This function takes a turf to prevent race conditions, as the object calling it will probably be deleted in the same frame
 /proc/meteor_shield_impact_sound(var/turf/T, var/range)

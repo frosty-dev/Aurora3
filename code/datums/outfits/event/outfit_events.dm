@@ -105,7 +105,7 @@
 /datum/outfit/admin/event/sol_marine
 	name = "Solarian Marine"
 
-	uniform = /obj/item/clothing/under/rank/marine/fatigues
+	uniform = /obj/item/clothing/under/rank/fatigues/marine
 	shoes = /obj/item/clothing/shoes/magboots
 	gloves = /obj/item/clothing/gloves/combat
 	l_ear = /obj/item/device/radio/headset/syndicate
@@ -162,7 +162,7 @@
 	accessory_contents = list(/obj/item/ammo_casing/shotgun = 8,
 							/obj/item/ammo_casing/shotgun/pellet = 8)
 
-/datum/outfit/admin/event/sol_marine
+/datum/outfit/admin/event/sol_marine/leader
 	name = "Solarian Sergeant"
 	belt_contents = list(
 			/obj/item/ammo_magazine/c762/sol = 3,
@@ -173,3 +173,27 @@
 			/obj/item/grenade/flashbang = 1
 	)
 	accessory_contents = list(/obj/item/gun/projectile/automatic/wt550/lethal = 1)
+
+/datum/outfit/admin/pod/sol_navy
+	name = "Solarian Crewman"
+
+	uniform = /obj/item/clothing/under/rank/fatigues
+	shoes = /obj/item/clothing/shoes/jackboots
+	l_ear = /obj/item/device/radio/headset/syndicate
+	l_pocket = /obj/item/ammo_magazine/mc9mm
+	r_pocket = /obj/item/crowbar/red
+	belt = /obj/item/gun/projectile/pistol/sol
+
+/datum/outfit/admin/pod/nt_navy
+	name = "NanoTrasen Crewman"
+
+	uniform = list(
+		/obj/item/clothing/under/rank/cargo,
+		/obj/item/clothing/under/rank/hydroponics,
+		/obj/item/clothing/under/rank/janitor,
+		/obj/item/clothing/under/rank/engineer,
+		/obj/item/clothing/under/rank/medical,
+		/obj/item/clothing/under/rank/security
+	)
+	shoes = "shoe selection"
+	belt = /obj/item/gun/energy/disruptorpistol/miniature
