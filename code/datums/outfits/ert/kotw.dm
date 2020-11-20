@@ -119,10 +119,11 @@
 	)
 
 	belt_contents = list(
+		/obj/item/reagent_containers/hypospray = 1,
 		/obj/item/stack/medical/advanced/bruise_pack = 2,
 		/obj/item/stack/medical/advanced/ointment = 2,
 		/obj/item/stack/medical/splint = 1,
-		/obj/item/reagent_containers/syringe = 1,
+		/obj/item/reagent_containers/glass/bottle/thetamycin = 1,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 1
 	)
 
@@ -194,7 +195,6 @@
 	suit = /obj/item/clothing/suit/storage/vest/heavy
 
 	backpack_contents = list(
-		/obj/item/storage/box/survival = 1,
 		/obj/item/device/healthanalyzer = 1,
 		/obj/item/storage/firstaid/adv = 1,
 		/obj/item/storage/firstaid/o2 = 1,
@@ -205,10 +205,11 @@
 	)
 
 	belt_contents = list(
+		/obj/item/reagent_containers/hypospray = 1,
 		/obj/item/stack/medical/advanced/bruise_pack = 2,
 		/obj/item/stack/medical/advanced/ointment = 2,
 		/obj/item/stack/medical/splint = 1,
-		/obj/item/reagent_containers/syringe = 1,
+		/obj/item/reagent_containers/glass/bottle/thetamycin = 1,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 1
 	)
 
@@ -330,12 +331,17 @@
 		/obj/item/gun/projectile/automatic/mini_uzi = 1,
 		/obj/item/ammo_magazine/c45uzi = 2,
 		/obj/item/storage/firstaid/combat = 1,
-		/obj/item/storage/firstaid/adv = 1
+		/obj/item/storage/firstaid/adv = 1,
+		/obj/item/storage/firstaid/o2 = 1,
+		/obj/item/device/flashlight/pen = 1
 	)
 
 	belt_contents = list(
 		/obj/item/reagent_containers/hypospray = 1,
-		/obj/item/stack/medical/advanced/bruise_pack = 1,
-		/obj/item/stack/medical/advanced/ointment = 1,
-		/obj/item/reagent_containers/glass/bottle/thetamycin = 1
+		/obj/item/stack/medical/advanced/bruise_pack = 2,
+		/obj/item/stack/medical/advanced/ointment = 2,
+		/obj/item/stack/medical/splint = 1,
+		/obj/item/reagent_containers/glass/bottle/thetamycin = 1,
+		/obj/item/reagent_containers/glass/bottle/inaprovaline = 1,
+		/obj/item/device/healthanalyzer = 1
 	)
