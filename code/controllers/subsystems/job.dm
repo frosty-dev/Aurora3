@@ -401,6 +401,10 @@
 
 	INVOKE_ASYNC(GLOBAL_PROC, .proc/show_location_blurb, H.client, 30)
 
+	if(config.lore_summary)
+		var/loremessage = "<i>[config.lore_summary]</i><hr>"
+		to_chat(H, loremessage)
+
 	if(joined_late)
 		var/antag_count = 0
 		for(var/antag_type in SSticker.mode.antag_tags)
