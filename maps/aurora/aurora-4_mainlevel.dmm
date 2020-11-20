@@ -5707,7 +5707,7 @@
 /area/engineering/storage_hard)
 "akA" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/portable_atmospherics/canister/hydrogen,
 /turf/simulated/floor/plating,
 /area/engineering/storage_hard)
 "akB" = (
@@ -12755,7 +12755,7 @@
 /obj/machinery/air_sensor{
 	frequency = 1438;
 	id_tag = "engine_sensor";
-	output = 63
+	output = 31
 	},
 /turf/simulated/floor/greengrid/nitrogen{
 	icon = 'icons/turf/flooring/plating.dmi';
@@ -21742,6 +21742,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/security/brig/control_room)
 "aLD" = (
@@ -33260,7 +33261,7 @@
 /area/crew_quarters/heads/hop)
 "bfz" = (
 /obj/machinery/door/airlock{
-	id_tag = command_unit_1;
+	id_tag = "command_unit_1";
 	name = "Unit 1"
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -61041,6 +61042,11 @@
 	temperature = 278
 	},
 /area/medical/surgerywing)
+"gws" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/kitchen)
 "gxO" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -63294,10 +63300,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "lJh" = (
-/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/effect/floor_decal/corner_wide/mauve{
+	dir = 10
+	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/kitchen)
+/area/rnd/lab)
 "lJu" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -94819,7 +94827,7 @@ osb
 bvY
 bxj
 byM
-xJp
+lJh
 bAP
 bBI
 bCF
@@ -100494,7 +100502,7 @@ ndR
 bOR
 bRQ
 bOR
-lJh
+bOR
 fTZ
 bOR
 bOR
@@ -101265,7 +101273,7 @@ bOt
 bOZ
 cbZ
 keq
-bOR
+gws
 keq
 bOR
 keq
