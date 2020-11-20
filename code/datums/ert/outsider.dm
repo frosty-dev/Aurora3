@@ -44,3 +44,8 @@
 	name = "Coalition of Colonies Troopers"
 	spawner = /datum/ghostspawner/human/ert/coc
 	chance = 15
+
+/datum/responseteam/zora
+	name = "Zo'ra Warriors"
+	spawner = /datum/ghostspawner/human/ert/zora
+	chance = 15

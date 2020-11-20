@@ -6,7 +6,7 @@
 	max_count = 3
 	uses_species_whitelist = FALSE
 
-	outfit = /datum/outfit/admin/pra_cosmonaut
+	outfit = /datum/outfit/admin/event/pra_cosmonaut
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI, SPECIES_TAJARA_ZHAN)
 
 	extra_languages = list(LANGUAGE_SIIK_MAAS)
@@ -21,7 +21,7 @@
 	max_count = 1
 
 
-	outfit = /datum/outfit/admin/pra_cosmonaut/ert/commissar
+	outfit = /datum/outfit/admin/event/pra_cosmonaut/commissar
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI)
 	req_species_whitelist = SPECIES_TAJARA
 
@@ -33,7 +33,7 @@
 
 	max_count = 1
 
-	outfit = /datum/outfit/admin/pra_cosmonaut/ert/commander
+	outfit = /datum/outfit/admin/event/pra_cosmonaut/commander
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI)
 
 /datum/ghostspawner/human/ert/pra_cosmonaut/tesla
@@ -43,7 +43,7 @@
 
 	max_count = 1
 
-	outfit = /datum/outfit/admin/pra_cosmonaut/ert/tesla
+	outfit = /datum/outfit/admin/event/pra_cosmonaut/tesla
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI, SPECIES_TAJARA_ZHAN)
 
 /datum/ghostspawner/human/ert/pra_cosmonaut/medic
@@ -53,7 +53,7 @@
 
 	max_count = 1
 
-	outfit = /datum/outfit/admin/pra_cosmonaut/ert/medic
+	outfit = /datum/outfit/admin/event/pra_cosmonaut/medic
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI, SPECIES_TAJARA_ZHAN)
 
 
@@ -106,3 +106,21 @@
 	desc = "Be part of the Coalition of Colonies forces as a heavy trooper. Help NanoTrasen and the Republic of Biesel against the invading Solarian force."
 	max_count = 1
 	outfit = /datum/outfit/admin/event/coalition_trooper/heavy
+
+
+/datum/ghostspawner/human/ert/zora
+	short_name = "zora_warrior"
+	name = "Zo'rane Warrior"
+	desc = "Be part of the Zo'ra hive forces. Help NanoTrasen and the Republic of Biesel against the invading Solarian force."
+	max_count = 5
+
+	outfit = /datum/outfit/admin/event/zora_warrior
+	possible_species = list(SPECIES_VAURCA_WARRIOR)
+
+/datum/ghostspawner/human/ert/zora/medic
+	short_name = "zora_medic"
+	name = "Zo'rane Medical Specialist"
+	desc = "Be part of the Zo'ra hive forces as an medic. Help NanoTrasen and the Republic of Biesel against the invading Solarian force."
+	max_count = 1
+	outfit = /datum/outfit/admin/event/zora_warrior/medic
+	possible_species = list(SPECIES_VAURCA_WORKER)
