@@ -40,9 +40,9 @@
 		kill()
 
 /datum/event/sol_team/start()
-	for(var/spawner in spawner_names)
-		var/datum/ghostspawner/human/sol_marine/G = SSghostroles.get_spawner(spawner)
-		if(istype(G))
+	for(var/s in SSghostroles.spawners)
+		var/datum/ghostspawner/G = SSghostroles.spawners[s]
+		if((G.short_name == "sol_marine") || (G.short_name == "sol_marine_ws") || (G.short_name == "sol_marine_ld"))
 			G.enable()
 
 /datum/event/sol_team/end()
@@ -169,5 +169,6 @@
 
 /datum/event/freighter/start()
 	for(var/s in SSghostroles.spawners)
-		var/datum/ghostspawner/human/ert/tcfl/G = SSghostroles.spawners[s]
-		G.enable()
+		var/datum/ghostspawner/G = SSghostroles.spawners[s]
+		if((G.short_name == "tcflr") || (G.short_name == "tcfls") || (G.short_name == "tcfll") || (G.short_name == "tcflpl"))
+			G.enable()
