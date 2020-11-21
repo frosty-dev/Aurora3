@@ -406,7 +406,10 @@ Command action procs
 		to_chat(user, SPAN_WARNING("Under directive 7-10, [station_name()] is quarantined until further notice."))
 		return FALSE
 
-	emergency_shuttle.call_evac()
+	to_chat(user, SPAN_WARNING("The emergency shuttle is disabled due to security reasons."))
+	return FALSE
+
+//	emergency_shuttle.call_evac()
 	log_game("[key_name(user)] has called the shuttle.",ckey=key_name(user))
 	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
 
