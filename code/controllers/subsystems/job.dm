@@ -405,6 +405,8 @@
 
 	to_chat(H, "<i>Welcome to the KING OF THE WORLD event week. This week (or up to two), you are able to participate in the ongoing SOLARIAN INVASION. Admiral Raymond Ozdemir has directed the Thirty-Fifth Battlefleet to Tau Ceti, and has begun a militarized assault against the Republic of Biesel. With his sights set on the remainder of the galactic phoron reserves and NT's phoron monopoly just an arm's reach away, he has taken it upon himself to unleash hell upon the young Republic! His warpath will start here, and conclude with the crown of the Solarian Alliance - seated comfortably at Earth! Deaths/injuries relating to these events are to be treated like deaths on extended, and thus are able to be retconned at player discretion (with exception of actual announced events that occur)!</i>")
 
+	to_chat(H, " ")
+
 	to_chat(H, "<i>Special round traits that may be important to you are a total lack of a shift-end shuttle or evacuation and everyone being staffed as emergency staff during the invasion. Ghost roles will be available very often for various invasion-related roles. These are NOT event roles and thus, any deaths regarding them can be freely retconned - however, interactions can remain canon if you wish!</i><hr>")
 
 	if(joined_late)
