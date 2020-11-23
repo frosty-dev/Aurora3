@@ -73,11 +73,13 @@ var/datum/controller/subsystem/emergency_shuttle/emergency_shuttle
 				)
 				priority_announcement.Announce(replacemany(current_map.shuttle_docked_message, fields), new_sound = 'sound/AI/shuttledock.ogg')
 
+		shuttle.launch(src)
+		shuttle.force_launch(src)
 		//arm the escape pods
-		if (evac)
-			for (var/datum/shuttle/autodock/ferry/escape_pod/pod in escape_pods)
-				if (pod.arming_controller)
-					pod.arming_controller.arm()
+//		if (evac)
+//			for (var/datum/shuttle/autodock/ferry/escape_pod/pod in escape_pods)
+//				if (pod.arming_controller)
+//					pod.arming_controller.arm()
 
 //begins the launch countdown and sets the amount of time left until launch
 /datum/controller/subsystem/emergency_shuttle/proc/set_launch_countdown(var/seconds)

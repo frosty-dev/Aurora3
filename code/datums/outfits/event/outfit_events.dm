@@ -133,6 +133,9 @@
 	accessory = /obj/item/clothing/accessory/holster/hip/brown
 	accessory_contents = list(/obj/item/gun/projectile/pistol/sol = 1)
 
+/datum/outfit/admin/event/sol_marine/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	H.accent = "Solarian"
+
 /datum/outfit/admin/event/sol_marine/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	var/obj/item/clothing/accessory/sol_pin/S = new

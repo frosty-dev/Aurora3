@@ -10,7 +10,7 @@
 	enabled = FALSE
 	spawnpoints = list("sol_marine")
 	req_perms = null
-	max_count = 2 // TODO: bump this to three with enough sec?
+	max_count = 3 // TODO: bump this to three with enough sec?
 	uses_species_whitelist = FALSE
 
 	outfit = /datum/outfit/admin/event/sol_marine
