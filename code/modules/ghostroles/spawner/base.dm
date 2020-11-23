@@ -36,6 +36,8 @@
 	var/mob_name_suffix = null //The suffix that should be applied to the mob name
 	var/away_site = FALSE
 
+	var/datum/event/attached_event = null
+
 /datum/ghostspawner/New()
 	. = ..()
 	if(!jobban_job)
@@ -100,6 +102,8 @@
 
 //Proc executed before someone is spawned in
 /datum/ghostspawner/proc/pre_spawn(mob/user)
+	if(attached_event && count == 0)
+		attached_event.gs_spawned()
 	count++ //Increment the spawned in mob count
 	if(max_count && count >= max_count)
 		enabled = FALSE

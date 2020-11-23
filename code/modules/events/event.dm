@@ -114,6 +114,11 @@
 /datum/event/proc/lastProcessAt()
 	return max(startWhen, max(announceWhen, endWhen))
 
+// ghost spawner handling logic because I'm a terrible programmer and also lazy
+// overwrite as needed
+/datum/event/proc/gs_spawned()
+	return
+
 //Do not override this proc, instead use the appropiate procs.
 //This proc will handle the calls to the appropiate procs.
 /datum/event/process()
@@ -146,6 +151,7 @@
 
 	if(failed_to_spawn)
 		var/datum/event_container/killed_ec = SSevents.event_containers[severity]
+		killed_ec.acquire_event()
 		killed_ec.start_event()
 
 	isRunning = 0

@@ -10,7 +10,6 @@
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI, SPECIES_TAJARA_ZHAN)
 
 	extra_languages = list(LANGUAGE_SIIK_MAAS)
-	uses_species_whitelist = FALSE
 
 
 /datum/ghostspawner/human/ert/pra_cosmonaut/commissar
@@ -113,6 +112,7 @@
 	name = "Zo'rane Warrior"
 	desc = "Be part of the Zo'ra hive forces. Help NanoTrasen and the Republic of Biesel against the invading Solarian force."
 	max_count = 5
+	uses_species_whitelist = FALSE
 
 	outfit = /datum/outfit/admin/event/zora_warrior
 	possible_species = list(SPECIES_VAURCA_WARRIOR)

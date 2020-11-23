@@ -51,9 +51,9 @@
 		M = new /obj/effect/meteor/ship_debris(pickedstart)
 	else if(bombardment)
 		switch(rand(1, 4))
-			if(1 to 2)
+			if(1)
 				M = new /obj/effect/meteor/ship_debris(pickedstart)
-			if(3 to 4)
+			if(2 to 4)
 				M = new /obj/effect/meteor/coilgun(pickedstart)
 	else
 		switch(rand(1, 100))
@@ -364,13 +364,48 @@
 	dropamt = 0
 	power = 5
 	power_step = 1
-	hits = 15
+	hits = 10
 	detonation_chance = 95
 	move_lag = 1
 
-/obj/effect/meteor/coilgun/New()
-	..()
-	msg_admin_attack("Coilgun projectile spawned at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+/obj/effect/meteor/coilgun/Collide(atom/A)
+	if (!done)
+		spawn(0)
+			var/turf/T = src.loc
+			if (istype(A, /obj/effect/energy_field)) // Coilgun round + meteor shield = fun times
+				done = TRUE
+				hits = 0
+				power *= 0.5
+				power_step *= 0.5
+				for(var/mob/M in player_list)
+					if(!istype(T) || !istype(M) || !AreConnectedZLevels(T.z, M.z))
+						continue
+					shake_camera(M, 3, get_dist(M.loc, src.loc) > 20 ? 2 : 4)
+
+				if (T)
+					meteor_shield_impact_sound(T, shieldsoundrange)
+				explosion(loc, power, power + power_step, power + power_step * 2, power + power_step * 3, 0)
+				msg_admin_attack("Coilgun round impacted energy field and then exploded at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				spawn()//Have to delay the qdel a little, or the playsound will throw a runtime
+					qdel(src)
+
+			else if (A)
+				for(var/mob/M in player_list)
+					if(!istype(T) || !istype(M) || !AreConnectedZLevels(T.z, M.z))
+						continue
+					shake_camera(M, 3, get_dist(M.loc, src.loc) > 20 ? 2 : 4)
+					playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
+				explosion(src.loc, 0, 1, 2, 3, 0)
+
+			if (--src.hits == 0 && !done)
+				done = TRUE
+				if(prob(detonation_chance))
+					explosion(loc, power, power + power_step, power + power_step * 2, power + power_step * 3, 0)
+					msg_admin_attack("Coilgun round exploded at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				else
+					msg_admin_attack("Coilgun dissipated without a final explosion at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				spawn()
+					qdel(src)
 
 //This function takes a turf to prevent race conditions, as the object calling it will probably be deleted in the same frame
 /proc/meteor_shield_impact_sound(var/turf/T, var/range)

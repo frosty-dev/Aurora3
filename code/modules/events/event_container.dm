@@ -1,6 +1,7 @@
 #define ASSIGNMENT_ANY "Any"
 #define ASSIGNMENT_AI "AI"
 #define ASSIGNMENT_CYBORG "Cyborg"
+#define ASSIGNMENT_CARGO "Cargo"
 #define ASSIGNMENT_ENGINEER "Engineer"
 #define ASSIGNMENT_GARDENER "Gardener"
 #define ASSIGNMENT_JANITOR "Janitor"
@@ -181,6 +182,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Moderate Vermin Infestation",		/datum/event/infestation/moderate, 			30,		list(ASSIGNMENT_JANITOR = 15, ASSIGNMENT_SECURITY = 15, ASSIGNMENT_MEDICAL = 10)),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Rescue Pod",						/datum/event/rescue_pod, 					50,		list(ASSIGNMENT_MEDICAL = 10, ASSIGNMENT_SECURITY = 2), is_one_shot = TRUE),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Burglar Pod",						/datum/event/rescue_pod/burglar, 			50,		list(ASSIGNMENT_SECURITY = 5), is_one_shot = TRUE, excluded_roundtypes = list("Extended")),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Shift Goal",						/datum/event/shift_goal,					50, 	list(ASSIGNMENT_CARGO = 5), TRUE),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Debris Field",						/datum/event/meteor_wave/bombardment/minor,	0),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "NT Escape Pod",					/datum/event/rescue_pod/crewman/nt,			0),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Sol Escape Pod",					/datum/event/rescue_pod/crewman/sol,		0)
@@ -196,13 +198,24 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Space Vines",					/datum/event/spacevine, 				75,	list(ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_GARDENER = 20), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Spider Infestation",			/datum/event/spider_infestation,		25, list(ASSIGNMENT_SECURITY = 10, ASSIGNMENT_MEDICAL = 5), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Major Vermin Infestation",	/datum/event/infestation/major, 		15,	list(ASSIGNMENT_SECURITY = 15, ASSIGNMENT_MEDICAL = 5)),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Sol Frigate",					/datum/event/sol_team,					50),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Hostile Bombardment",			/datum/event/meteor_wave/bombardment,	0)
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Sol Frigate",					/datum/event/sol_team,					0, 	list(ASSIGNMENT_MEDICAL = 5, ASSIGNMENT_SECURITY = 10), TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop",						/datum/event/freighter,					75, list(ASSIGNMENT_CARGO = 10), TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Reinforcement",				/datum/event/freighter/reinforcement,	75, list(ASSIGNMENT_SECURITY = -1), TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Refugees",					/datum/event/freighter/refugee,			50, list(ASSIGNMENT_MEDICAL = 10), TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Wounded TCFL",				/datum/event/tcfl_visit,				0, 	list(ASSIGNMENT_MEDICAL = 25), TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Hostile Bombardment",			/datum/event/meteor_wave/bombardment,	0),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop - NT",				/datum/event/freighter/nt,				0),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop - Ely",				/datum/event/freighter/elyran,			0),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop - CoC",				/datum/event/freighter/coalition,		0),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop - PRA",				/datum/event/freighter/pra,				0),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop - Zo'ra",				/datum/event/freighter/zora,			0),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pitstop - Hegemony",			/datum/event/freighter/hegemony,		0)
 	)
 
 #undef ASSIGNMENT_ANY
 #undef ASSIGNMENT_AI
 #undef ASSIGNMENT_CYBORG
+#undef ASSIGNMENT_CARGO
 #undef ASSIGNMENT_ENGINEER
 #undef ASSIGNMENT_GARDENER
 #undef ASSIGNMENT_JANITOR

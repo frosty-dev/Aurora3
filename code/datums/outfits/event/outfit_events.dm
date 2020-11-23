@@ -117,7 +117,7 @@
 	suit = /obj/item/clothing/suit/space/void/sol
 	mask = /obj/item/clothing/mask/gas/tactical
 	back = /obj/item/tank/jetpack/carbondioxide
-	suit_store = /obj/item/gun/projectile/automatic/rifle
+	suit_store = /obj/item/gun/projectile/automatic/rifle/sol
 
 	belt = /obj/item/storage/belt/military
 	belt_contents = list(
@@ -146,7 +146,7 @@
 	head = null
 	suit = null
 	mask = /obj/item/clothing/mask/gas/tactical
-	back = /obj/item/rig/military/equipped
+	back = null
 	belt_contents = list(
 			/obj/item/gun/projectile/pistol/sol = 1,
 			/obj/item/ammo_magazine/mc9mm = 2,
@@ -155,8 +155,11 @@
 			/obj/item/grenade/frag = 2,
 			/obj/item/grenade/flashbang = 2
 	)
+	shoes = /obj/item/clothing/shoes/jackboots
+	gloves = null
 
 	l_hand = /obj/item/gun/projectile/shotgun/pump/combat/sol
+	r_hand = /obj/item/rig/military/equipped
 
 	accessory = /obj/item/clothing/accessory/storage/bandolier
 	accessory_contents = list(/obj/item/ammo_casing/shotgun = 8,
@@ -197,3 +200,41 @@
 	)
 	shoes = "shoe selection"
 	belt = /obj/item/gun/energy/disruptorpistol/miniature
+
+/datum/outfit/admin/event/sol_refugee
+	name = "Sol Refugee"
+	uniform = list(
+		/obj/item/clothing/under/serviceoveralls,
+		/obj/item/clothing/under/brown,
+		/obj/item/clothing/under/pants,
+		/obj/item/clothing/under/pants/khaki,
+		/obj/item/clothing/under/suit_jacket/tan
+	)
+	suit = list(
+		/obj/item/clothing/accessory/poncho,
+		/obj/item/clothing/suit/storage/toggle/bomber,
+		/obj/item/clothing/suit/apron/overalls/random,
+		/obj/item/clothing/suit/storage/leathercoat,
+		/obj/item/clothing/suit/storage/toggle/flannel,
+		/obj/item/clothing/suit/storage/toggle/leather_vest,
+		/obj/item/clothing/suit/storage/toggle/leather_jacket,
+		/obj/item/clothing/suit/storage/toggle/trench,
+		null
+	)
+	shoes = "shoe selection"
+	id = /obj/item/storage/wallet/random
+
+/datum/outfit/admin/event/sol_refugee/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	if(!H.shoes)
+		var/fallback_type = pick(/obj/item/clothing/shoes/sandal, /obj/item/clothing/shoes/jackboots/toeless, /obj/item/clothing/shoes/laceup/brown/all_species, /obj/item/clothing/shoes/laceup/all_species)
+		H.equip_to_slot_or_del(new fallback_type(H), slot_shoes)
+
+	var/obj/item/storage/wallet/W = H.wear_id
+	var/obj/item/card/id/syndicate/raider/passport = new(H.loc)
+	passport.name = "[H.real_name]'s Passport"
+	if(W)
+		W.handle_item_insertion(passport)

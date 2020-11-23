@@ -3,8 +3,7 @@
 	name = "Sol Marine"
 	short_name = "sol_marine"
 	desc = "Rank and file of the Solarian Armed Forces, with one mission: seize the Aurora by any means necessary."
-	welcome_message = "You are a member of the Solarian Armed Forces. Your goal is simple: seize control of the NSS Aurora by any means necessary. \
-	Support from the fleet will be limited to nonexistent. Resistance is expected to be extremely high."
+	welcome_message = "You’re a Solarian Marine! You are part of the Solarian 35th Battlefleet, a rogue asset of the Sol Alliance which has recently decided to attack Tau Ceti and the Republic of Biesel which resides in it. The battle is ongoing, and you’re deep in hostile territory at the NSS Aurora. Whatever your goal might be, follow the leader and stick together to serve as an opposing force to the crew!"
 	tags = list("External")
 	mob_name_prefix = "PFC "
 
@@ -49,15 +48,44 @@
 	welcome_message += "<br/>[SPAN_BOLD("As a sergeant")], you are expected to lead your fireteam through the completion of your mission. Tactical plans are left to your discretion, \
 	but it is highly advised that you eliminate all hostile corporate security personnel, and disable outbound communications before reinforcements arrive."
 
-/* Sol Infiltration Team */
-
 /* Refugees */
+/datum/ghostspawner/human/refugee
+	name = "Solarian Refugee"
+	short_name = "sol_refugee"
+	desc = "A refugee fleeing Solarian space, seeking refuge in Republic territory."
+	welcome_message = "You’re a Solarian refugee! The chaos surrounding the Republic of Biesel’s borders has affected your home and livelihood, and for whatever reason you’ve taken it upon yourself to enter Tau Ceti fleeing the upset star-nation. You’re arriving at the NSS Aurora alongside an indeterminate count of other refugees seeking safe haven. Do whatever it takes to survive amidst a land of people who don’t trust you!"
+	tags = list("External")
+
+	enabled = FALSE
+	spawnpoints = list("Pitstop")
+	req_perms = null
+	max_count = 10
+	uses_species_whitelist = FALSE
+
+	outfit = /datum/outfit/admin/event/sol_refugee
+	possible_species = list(SPECIES_HUMAN)
+	allow_appearance_change = APPEARANCE_PLASTICSURGERY
+
+	assigned_role = "Refugee"
+	special_role = "Refugee"
+	respawn_flag = null
+	extra_languages = list(LANGUAGE_SOL_COMMON)
+
+/datum/ghostspawner/human/refugee/infiltrator
+	name = "Solarian Infiltrator"
+	short_name = "sol_infiltrator"
+	desc = "A member of Alliance Strategic Intelligence, acting in deep cover posing as a fleeing Solarian refugee."
+	welcome_message = "You are an Alliance intelligence officer loyal to Grand Admiral Ozdemir, posing as a Solarian refugee. Your principal objective is the collection \
+	of any information that can assist the Grand Admiral's invasion plans and deliver a decisive blow to NanoTrasen. The utmost care must be taken to \
+	prevent your discovery aboard the station."
+	max_count = 2
+	// outfit = /datum/outfit/admin/event/sol_refugee/infiltrator
 
 /* Wounded / Escape Pods */
 
 /datum/ghostspawner/human/rescuepodsurv/crewpod
 	short_name = "crewpod"
-	max_count = 2
+	max_count = 0
 
 /datum/ghostspawner/human/rescuepodsurv/crewpod/sol
 	short_name = "solescape"
@@ -66,6 +94,7 @@
 
 	possible_species = list(SPECIES_HUMAN)
 	outfit = /datum/outfit/admin/pod/sol_navy
+	max_count = 2
 
 	// TODO: Ship name + role generation?
 
@@ -79,6 +108,7 @@
 	desc = "One of the few surviving members of a now-destroyed NanoTrasen vessel, hurtling toward the Aurora in an escape pod."
 
 	outfit = /datum/outfit/admin/pod/nt_navy
+	max_count = 2
 
 /datum/ghostspawner/human/rescuepodsurv/crewpod/nt/New()
 	welcome_message = "[SPAN_BOLD("You're a stranded NanoTrasen crew member!")] <br>\
