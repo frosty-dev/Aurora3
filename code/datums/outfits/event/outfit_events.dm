@@ -137,7 +137,7 @@
 	H.accent = "Solarian"
 
 /datum/outfit/admin/event/sol_marine/get_id_access()
-	return get_syndicate_access(id_access)
+	return get_syndicate_access("Syndicate Agent")
 
 /datum/outfit/admin/event/sol_marine/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
