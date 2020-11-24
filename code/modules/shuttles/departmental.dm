@@ -31,6 +31,13 @@
 				G.enable()
 		triggered_away_sites = TRUE
 
+/datum/shuttle/autodock/ferry/merchant_aurora/shuttle_moved()
+	. = ..()
+	if(isStationLevel(next_location.loc.z))
+		var/datum/ghostspawner/G = SSghostroles.get_spawner("sol_refugee")
+		if(istype(G))
+			G.disable()
+
 /obj/machinery/computer/shuttle_control/merchant
 	name = "merchant shuttle control console"
 	req_access = list(access_merchant)

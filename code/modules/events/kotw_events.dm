@@ -122,26 +122,32 @@
 	no_fake = TRUE
 	startWhen = 30
 	// same stats as meteor_wave/shower
-	wave_delay  = 6
+	wave_delay  = 10
 	min_waves 	= 3
-	max_waves 	= 6
+	max_waves 	= 5
 	min_meteors = 3
-	max_meteors = 8
-	duration    = 180 //Total duration in seconds that the storm will last after it starts
+	max_meteors = 4
+	duration    = 240 //Total duration in seconds that the storm will last after it starts
 
 	waves		= 4//this is randomised
 	next_wave 	= 30
+	var/initial_level
+	var/dir_text
 
 /datum/event/meteor_wave/bombardment/setup()
-	set_dir = pick(1, 2, 3, 4)
+	set_dir = pick(1, 3, 4) // don't spawn south because that'll spawn inside the shield and vibe-check the station
 
 /datum/event/meteor_wave/bombardment/minor
 	startWhen   = 86
 	bombardment = FALSE
+	downed_ship = TRUE
 
 /datum/event/meteor_wave/bombardment/announce()
 	command_announcement.Announce("Station sensors detect several high-speed projectiles closing rapidly. Estimate one minute to impact. \
-	All crew are advised to seek immediate shelter in well-reinforced sections of the station, and ensure suit lifesign sensors are properly enabled.", "Inbound Ordinance Alert")
+	All crew are advised to seek immediate shelter in well-reinforced sections of the station, away from areas of the station in proximity to the surface.", "Inbound Ordinance Alert")
+	if(security_level < SEC_LEVEL_RED)
+		initial_level = security_level
+		set_security_level(SEC_LEVEL_RED)
 
 /datum/event/meteor_wave/bombardment/start()
 	command_announcement.Announce("Inbound ordinance has reached the station perimeter. All hands, brace for impact.", "Inbound Ordinance Alert")
@@ -154,10 +160,11 @@
 	command_announcement.Announce("The debris cloud has reached the station. All hands, brace for impact.", "Debris Alert")
 
 /datum/event/meteor_wave/bombardment/end()
-	addtimer(CALLBACK(src, .proc/announce_end), 10 SECONDS)
+	addtimer(CALLBACK(src, .proc/announce_end), 60 SECONDS)
 
 /datum/event/meteor_wave/bombardment/proc/announce_end()
 	command_announcement.Announce("No further incoming projectiles registered on sensors. Crew may now return to their stations and attend to damage control procedures.", "Inbound Ordinance Alert")
+	set_security_level(initial_level)
 
 /datum/event/meteor_wave/bombardment/minor/announce_end()
 	command_announcement.Announce("The station is now clear of the debris cloud. Crew may now return to their stations and attend to damage control procedures.", "Debris Alert")
@@ -214,7 +221,10 @@
 			kill()
 			return
 	if(!freighter_type)
-		freighter_type = prob(66) ? "NanoTrasen" : pick("Coalition", "Elyran", "PRA", "Zo'ra", "Izweski Hegemony")
+		if(istype(src, /datum/event/freighter/reinforcement))
+			freighter_type = pick("Coalition", "Elyran", "PRA", "Zo'rane", "Izweski Hegemony")
+		else
+			freighter_type = prob(66) ? "NanoTrasen" : pick("Coalition", "Elyran", "PRA", "Zo'rane", "Izweski Hegemony")
 	if(freighter_type == "Elyran")
 		spawner_names = list("elyra_trooper", "elyra_engtrooper", "elyra_heavy")
 	else if(freighter_type == "Coalition")
@@ -285,6 +295,26 @@
 		On-station security should treat them with the utmost scrutiny, and afford them only the comforts provided within NanoTrasen corporate regulations. \
 		Additional security reinforcements are standing by should a situation requiring their deployment develop.", "Solarian Refugee Arrival"
 	)
+
+/datum/event/freighter/refugee/proc/calc_pop()
+	var/pop = 0
+	for(var/mob/M in player_list)
+		if(!M.mind || !M.client || M.client.is_afk(10 MINUTES)) // longer than 10 minutes AFK counts them as inactive
+			continue
+
+		pop++
+
+	return max(round(pop / 5), 1)
+
+/datum/event/freighter/refugee/start()
+	for(var/spawner in spawner_names)
+		var/datum/ghostspawner/G = SSghostroles.get_spawner(spawner)
+		if(spawner == "sol_refugee")
+			G.max_count = calc_pop()
+		if(istype(G))
+			G.spawnpoints = list("Pitstop")
+			G.attached_event = src
+			G.enable()
 
 /datum/event/tcfl_visit
 	announceWhen = -1

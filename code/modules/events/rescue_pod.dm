@@ -3,6 +3,7 @@
     var/spawner_name = "rescuepodsurv"
     var/datum/ghostspawner/human/rescuepodsurv/spawner
     var/spawned = FALSE
+    announceWhen = -1
 
 /datum/event/rescue_pod/announce()
     if(prob(66))

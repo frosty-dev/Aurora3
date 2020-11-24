@@ -17,8 +17,6 @@
 	special_role = "Pod Survivor"
 	respawn_flag = null
 
-	mob_name = FALSE
-
 /datum/ghostspawner/human/rescuepodsurv/New()
 	. = ..()
 	var/t = pick(list("star", "priest", "rep", "smuggler", "hunter", "occultist", "pmc"))

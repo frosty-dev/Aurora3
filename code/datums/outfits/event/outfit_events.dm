@@ -175,13 +175,12 @@
 	name = "Solarian Sergeant"
 	belt_contents = list(
 			/obj/item/ammo_magazine/c762/sol = 3,
-			/obj/item/ammo_magazine/mc9mmt = 2,
+			/obj/item/ammo_magazine/mc9mm = 2,
 			/obj/item/shield/energy = 1,
 			/obj/item/melee/energy/sword = 1,
 			/obj/item/grenade/frag = 1,
 			/obj/item/grenade/flashbang = 1
 	)
-	accessory_contents = list(/obj/item/gun/projectile/automatic/wt550/lethal = 1)
 
 /datum/outfit/admin/pod/sol_navy
 	name = "Solarian Crewman"
@@ -212,9 +211,9 @@
 	uniform = list(
 		/obj/item/clothing/under/serviceoveralls,
 		/obj/item/clothing/under/brown,
-		/obj/item/clothing/under/pants,
-		/obj/item/clothing/under/pants/khaki,
-		/obj/item/clothing/under/suit_jacket/tan
+		/obj/item/clothing/under/suit_jacket/charcoal,
+		/obj/item/clothing/under/suit_jacket/tan,
+		/obj/item/clothing/under/medical_gown
 	)
 	suit = list(
 		/obj/item/clothing/accessory/poncho,

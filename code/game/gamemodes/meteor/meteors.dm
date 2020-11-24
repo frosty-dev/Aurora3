@@ -362,45 +362,50 @@
 	icon_state = "coilgun"
 	meteor_loot = null
 	dropamt = 0
-	power = 5
-	power_step = 1
+	power = 4
+	power_step = 2
 	hits = 10
 	detonation_chance = 95
-	move_lag = 1
+	shieldsoundrange = 500
+
+/obj/effect/meteor/coilgun/ex_act()
+	return
 
 /obj/effect/meteor/coilgun/Collide(atom/A)
 	if (!done)
 		spawn(0)
-			var/turf/T = src.loc
+			var/turf/T = loc
+			if(!istype(T) && A?.loc)
+				T = A.loc
 			if (istype(A, /obj/effect/energy_field)) // Coilgun round + meteor shield = fun times
 				done = TRUE
 				hits = 0
 				power *= 0.5
-				power_step *= 0.5
+				power_step *= 2
+				// The shield stops the rounds but only for so long
 				for(var/mob/M in player_list)
 					if(!istype(T) || !istype(M) || !AreConnectedZLevels(T.z, M.z))
 						continue
-					shake_camera(M, 3, get_dist(M.loc, src.loc) > 20 ? 2 : 4)
+					shake_camera(M, 3, get_dist(M.loc, T) > 20 ? 1 : 3)
 
-				if (T)
-					meteor_shield_impact_sound(T, shieldsoundrange)
-				explosion(loc, power, power + power_step, power + power_step * 2, power + power_step * 3, 0)
+				meteor_shield_impact_sound(T, shieldsoundrange)
+				explosion(T, power, power + power_step, power + power_step * 2, power + power_step * 3, 0)
 				msg_admin_attack("Coilgun round impacted energy field and then exploded at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 				spawn()//Have to delay the qdel a little, or the playsound will throw a runtime
 					qdel(src)
 
 			else if (A)
 				for(var/mob/M in player_list)
-					if(!istype(T) || !istype(M) || !AreConnectedZLevels(T.z, M.z))
+					if(!AreConnectedZLevels(T.z, M.z))
 						continue
-					shake_camera(M, 3, get_dist(M.loc, src.loc) > 20 ? 2 : 4)
-					playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
-				explosion(src.loc, 0, 1, 2, 3, 0)
+					shake_camera(M, 3, get_dist(M.loc, src.loc) > 20 ? 1 : 3)
+					playsound(T, 'sound/effects/meteorimpact.ogg', 40, 1)
+				explosion(T, 0, 1, 2, 3, 0)
 
 			if (--src.hits == 0 && !done)
 				done = TRUE
 				if(prob(detonation_chance))
-					explosion(loc, power, power + power_step, power + power_step * 2, power + power_step * 3, 0)
+					explosion(T, power, power + power_step, power + power_step * 2, power + power_step * 3, 0)
 					msg_admin_attack("Coilgun round exploded at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 				else
 					msg_admin_attack("Coilgun dissipated without a final explosion at coords (<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
