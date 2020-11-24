@@ -136,6 +136,9 @@
 /datum/outfit/admin/event/sol_marine/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	H.accent = "Solarian"
 
+/datum/outfit/admin/event/sol_marine/get_id_access()
+	return get_syndicate_access(id_access)
+
 /datum/outfit/admin/event/sol_marine/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	var/obj/item/clothing/accessory/sol_pin/S = new
