@@ -9,7 +9,7 @@
 	supervisors = "company officials"
 	selection_color = "#90524b"
 	economic_modifier = 7
-	latejoin_at_spawnpoints = TRUE
+//	latejoin_at_spawnpoints = TRUE
 
 	minimum_character_age = 30
 
@@ -89,7 +89,7 @@
 	supervisors = "your embassy"
 	selection_color = "#90524b"
 	economic_modifier = 7
-	latejoin_at_spawnpoints = TRUE
+//	latejoin_at_spawnpoints = TRUE
 
 	minimum_character_age = 30
 
