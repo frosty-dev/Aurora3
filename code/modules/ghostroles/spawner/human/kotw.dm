@@ -95,6 +95,7 @@
 	possible_species = list(SPECIES_HUMAN)
 	outfit = /datum/outfit/admin/pod/sol_navy
 	max_count = 2
+	extra_languages = list(LANGUAGE_SOL_COMMON)
 
 	// TODO: Ship name + role generation?
 
