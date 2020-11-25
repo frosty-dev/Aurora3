@@ -178,6 +178,6 @@
 
 /obj/item/gun/energy/rifle/pulse/destroyer/cartel
 	name = "particle acceleration cannon"
-	desc = "The Particle Acceleration/Condensation Massive Automatic Cannon is a peculiar prototype only seen in the hands of the elite, mostly folks who have too much phoron to know what to do with it. This one is covered in logos you’ve never seen, depicting a blue chainlink."
+	desc = "The Particle Acceleration/Condensation Massive Automatic Cannon is a peculiar prototype only seen in the hands of the elite, mostly folks who have too much phoron to know what to do with it."
 	icon = 'icons/obj/kow-items.dmi'
 	contained_sprite = TRUE

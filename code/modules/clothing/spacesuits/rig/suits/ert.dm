@@ -136,7 +136,7 @@
 	req_one_access = list()
 
 /obj/item/rig/ert/assetprotection/cartel
-	name = "unidentifiable combat hardsuit"
-	desc = "A mysterious hardsuit, this is covered in logos you’ve never seen depicting a blue chainlink. It looks particularly alien, despite clearly being fitted for a Human body."
-	suit_type = "unidentifiable combat"
+	name = "conglomerate combat suit"
+	desc = "An unknowable design of SCC origin, this is covered in their branding with a mean and alien exterior."
+	suit_type = "conglomerate combat"
 	icon_state = "cartel_rig"
