@@ -137,15 +137,16 @@
 	gloves = null
 	shoes = /obj/item/clothing/shoes/swat
 	back = /obj/item/rig/gunslinger
-	l_pocket = null
+	l_pocket = /obj/item/melee/energy/sword = 1
 
 	l_hand = /obj/item/gun/projectile/heavysniper
 
 	belt_contents = list(
 			/obj/item/ammo_magazine/a454 = 2,
-			/obj/item/ammo_casing/a145 = 8,
-			/obj/item/melee/energy/sword = 1
+			/obj/item/ammo_casing/a145 = 7
 	)
+
+	accessory_contents = list(/obj/item/gun/projectile/revolver/mateba = 1)
 
 /datum/outfit/admin/event/zora_warrior
 	name = "Zo'rane Warrior"
@@ -243,7 +244,7 @@
 	r_pocket = /obj/item/crowbar/red
 	l_pocket = /obj/item/clothing/accessory/storage/bayonet
 
-/datum/outfit/admin/pra_cosmonaut/ert/get_id_access()
+/datum/outfit/admin/event/pra_cosmonaut/get_id_access()
 	return get_distress_access()
 
 /datum/outfit/admin/event/pra_cosmonaut/commissar
