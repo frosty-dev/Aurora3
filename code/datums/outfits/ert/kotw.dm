@@ -137,7 +137,7 @@
 	gloves = null
 	shoes = /obj/item/clothing/shoes/swat
 	back = /obj/item/rig/gunslinger
-	l_pocket = /obj/item/melee/energy/sword = 1
+	l_pocket = /obj/item/melee/energy/sword
 
 	l_hand = /obj/item/gun/projectile/heavysniper
 
