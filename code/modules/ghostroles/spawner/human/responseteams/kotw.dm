@@ -6,6 +6,8 @@
 	max_count = 3
 	uses_species_whitelist = FALSE
 
+	welcome_message = "You are part of the People's Republic of Adhomai Expeditionary Kosmostrelki Force. Listen to the commander, but do not ignore the Commissar as they are the Party's eyes."
+
 	outfit = /datum/outfit/admin/event/pra_cosmonaut
 	possible_species = list(SPECIES_TAJARA, SPECIES_TAJARA_MSAI, SPECIES_TAJARA_ZHAN)
 
@@ -16,6 +18,7 @@
 	short_name = "exp_pra_commissar"
 	name = "Expeditionary Kosmostrelki Party Commissar"
 	desc = "Help NanoTrasen and the Republic of Biesel against the invading forces, and ensure that the Kosmostrelki follow the principles of Hadiism."
+	welcome_message = "You are part of the People's Republic of Adhomai Expeditionary Kosmostrelki Force. Make sure that all Kosmostrelki are following the principles of Hadiism."
 
 	max_count = 1
 
@@ -29,7 +32,7 @@
 	short_name = "exp_pra_leader"
 	name = "Expeditionary Kosmostrelki Commander"
 	desc = "Lead the Kosmostrelki in helping NanoTrasen and the Republic of Biesel against the invading forces."
-
+	welcome_message = "You are part of the People's Republic of Adhomai Expeditionary Kosmostrelki Force. Guide the Kosmostrelki under your command to victory, but do not ignore the Commissar as they are the Party's eyes."
 	max_count = 1
 
 	outfit = /datum/outfit/admin/event/pra_cosmonaut/commander
